@@ -1,9 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import { Icon } from 'leaflet'
+import 'leaflet/dist/leaflet.css'
 
 import routes from './routes'
 
 Vue.use(VueRouter)
+
+delete Icon.Default.prototype._getIconUrl;
+
+Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+});
 
 /*
  * If not building with SSR mode, you can
@@ -24,3 +34,4 @@ export default function (/* { store, ssrContext } */) {
 
   return Router
 }
+
