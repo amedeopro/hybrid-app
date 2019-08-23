@@ -76,14 +76,7 @@ export default {
       this.$refs.map.mapObject.locate({ timeout: 20000 });
     },
     locationFound(location) {
-      this.userPosition = { ...location.latlng };
-      /**
-       * Update center with user position event,
-       *
-       * @event 'update:center'
-       * @type {object}
-       */
-      this.updateCenter({ ...location.latlng });
+      this.center = location.latlng;
     },
     locationError(error) {
       /**
